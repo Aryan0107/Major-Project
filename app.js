@@ -85,6 +85,8 @@ app.use("/listings", listingRoutes);
 app.use("/listings/:id/reviews", require("./routes/review.js"));
 app.use("/users", userRoutes);
 
-app.listen(8080, () => {
-    console.log("Server listening on port 8080");
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
 });
