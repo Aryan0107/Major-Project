@@ -1,0 +1,179 @@
+<% layout('layouts/boilerplate') %>
+
+<!-- 
+<h3>All Listings</h3> -->
+
+<style>
+ #filters{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:1.5rem;
+  margin-bottom:1rem;
+  border-bottom:1px solid #eee;
+  padding-bottom:1rem;
+}
+
+.filter{
+  text-align:center;
+  opacity:0.7;
+  transition:all 0.2s ease;
+}
+
+.filter i{
+  font-size:1.2rem;
+}
+
+.filter:hover{
+  opacity:1;
+  transform:scale(1.05);
+}
+
+.filter p{
+  font-size:0.85rem;
+  margin-top:0.35rem;
+}
+  .tax-info{
+    display: none;
+  }
+  .tax-toggle{
+  border: 1px solid #000;
+  border-radius: 1rem;
+  height: 3.25rem;
+  padding: 0 1rem;
+  margin-left: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+.listing-card{
+  border:none !important;
+  border-radius:1.25rem !important;
+  overflow:hidden;
+  transition:all 0.3s ease;
+}
+
+.listing-card:hover{
+  transform:translateY(-6px);
+}
+
+.card-img-top{
+  border-radius:1.25rem;
+  transition:all 0.4s ease;
+}
+
+.listing-card:hover .card-img-top{
+  opacity:0.9;
+}
+
+.card-body{
+  padding:0.75rem 0.25rem;
+}
+
+.card-title{
+  font-size:1.05rem;
+  margin-bottom:0.25rem;
+}
+
+.listing-link{
+  text-decoration:none;
+  color:black;
+}
+
+
+</style>
+<div id="filters">
+  <div class="filter">
+   <div><i class="fa-solid fa-fire"></i></div> 
+   <p>Trending</p>
+  </div>
+   <div class="filter">
+    <i class="fa-solid fa-bed"></i>
+   <p>Rooms</p>
+  </div>
+  <div class="filter">
+    <i class="fa-solid fa-mountain-city"></i>
+   <p>Iconic Cities</p>
+  </div>
+  <div class="filter">
+<i class="fa-solid fa-mountain"></i>
+    <p>Mountains</p>
+  </div>
+  <div class="filter">
+   <i class="fa-brands fa-fort-awesome"></i>
+   <p>Castles</p>
+  </div>
+  <div class="filter">
+   <i class="fa-solid fa-person-swimming"></i>
+   <p>Amazing Pools</p>
+  </div>
+  <div class="filter">
+   <i class="fa-solid fa-campground"></i>
+   <p>Camping</p>
+  </div>
+  <div class="filter">
+   <i class="fa-solid fa-cow"></i>
+   <p>Farms</p>
+  </div>
+  <div class="filter">
+ <i class="fa-solid fa-igloo"></i>
+   <p>Arctic</p>
+  </div>
+  <div class="tax-toggle">
+ <div class="form-check-reverse form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+  <label class="form-check-label" for="switchCheckDefault">Display Total after Taxes</label>
+</div>
+  </div>
+ 
+</div>
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+  <% for(let li of allListings){ %>
+
+    <div class="col mb-4">
+      <a href="/listings/<%= li._id %>" class="listing-link">
+        <div class="card h-100 listing-card">
+          <img
+            src="<%= li.image.url %>"
+            class="card-img-top"
+            alt="listing_image"
+            style="height: 20rem; object-fit: cover;"
+          >
+
+          <div class="card-img-overlay"></div>
+
+          <div class="card-body">
+            <h5 class="card-title">
+              <b><%= li.title %></b>
+            </h5>
+
+            <p class="card-text">
+              <%= li.description %>
+            </p>
+
+            <p class="card-text">
+              &#8377;<%= li.price.toLocaleString("en-IN") %>/night
+              <i class="tax-info">&nbsp; &nbsp; +18% GST</i>
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  <% } %>
+</div>
+<script>
+  let taxSwitch = document.getElementById("switchCheckDefault");
+
+  taxSwitch.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+
+    for (let info of taxInfo) {
+      if (info.style.display != "inline") {
+        info.style.display = "inline";
+      } else {
+        info.style.display = "none";
+      }
+    }
+  });
+</script>

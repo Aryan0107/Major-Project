@@ -1,0 +1,98 @@
+<style>
+.navbar{
+    height:5rem;
+    background:white;
+    border-bottom:1px solid #eee;
+}
+
+.navbar .container-fluid{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.navbar-brand{
+    color:#ff385c;
+    font-size:2rem;
+}
+
+.search-container{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.search-bar{
+    width:22rem;
+    height:3rem;
+    border:1px solid #ddd;
+    border-radius:999px;
+    padding:0.25rem;
+    background:white;
+    box-shadow:0 1px 8px rgba(0,0,0,0.12);
+}
+
+.search-input{
+    border:none !important;
+    box-shadow:none !important;
+}
+
+.search-btn{
+    width:2.3rem;
+    height:2.3rem;
+    border:none;
+    border-radius:50%;
+    background:#ff385c;
+    color:white;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:1.5rem;
+    margin-left:auto;
+}
+
+.nav-right .nav-link{
+    color:#222;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.nav-right .nav-link:hover{
+    color:#ff385c;
+}
+</style>
+
+<nav class="navbar navbar-expand-md sticky-top">
+  <div class="container-fluid">
+
+    <!-- Left -->
+    <a class="navbar-brand" href="/">
+      <i class="fa-solid fa-compass"></i>
+    </a>
+
+    <!-- Center -->
+    <div class="search-container">
+      <form class="d-flex search-bar">
+        <input
+          class="form-control search-input"
+          type="search"
+          placeholder="Search destinations"
+        >
+        <button class="search-btn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- Right -->
+    <div class="nav-right">
+  <a href="/listings" class="nav-link">Explore</a>
+  <a href="#" class="nav-link">Airbnb your home</a>
+  <a href="/users/signup" class="nav-link">Sign Up</a>
+  <a href="/users/login" class="nav-link">Login</a>
+</div>
+
+  </div>
+</nav>
